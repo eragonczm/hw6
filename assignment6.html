@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Art Gallery</title>
+    <style media="screen">
+      .thumbNails {
+        display: inline-block;
+        height: 70px;
+        margin: 20px 20px;
+        transition: box-shadow 400ms
+
+      }
+      #thumbNailSection {
+        text-align: center;
+      }
+
+      #largeImageSection {
+        position: relative;
+        text-align: center;
+        display: none;
+      }
+
+      #enlargedImage {
+        height: 300px;
+      }
+
+      .infoText {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: sans-serif;
+        color: #ffffff;
+      }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+    </script>
+  </head>
+  <body>
+
+    <header style="text-align: center; font-family: sans-serif;">
+      <h1>This is my gallery! </h1>
+    </header>
+
+    <!--five thumbnails-->
+    <div id="thumbNailSection">
+      <img class="thumbNails" id="art1" src="">
+      <img class="thumbNails" id="art2" src="">
+      <img class="thumbNails" id="art3" src="">
+      <img class="thumbNails" id="art4" src="">
+      <img class="thumbNails" id="art5" src="">
+    </div>
+
+    <script type="text/javascript" language="javascript">
+      function ArtPiece (name, price, smallImage, largeImage) {
+        this.nameOfPiece = name;
+        this.priceOfPiece = price;
+        this.smallImage = smallImage;
+        this.largeImage = largeImage;
+      }
+
+      var artPieces = new Array();
+      var art1 = new ArtPiece("After The Storm", 2250, "cyberpunk.png","cyberpunk.png")
+      artPieces.push(art1);
+      var art2 = new ArtPiece("Mountain", 250, "mountain.jpg","mountain.jpg")
+      artPieces.push(art2);
+      var art3 = new ArtPiece("Phoenix", 199, "phoenix.jpg","phoenix.jpg")
+      artPieces.push(art3);
+      var art4 = new ArtPiece("A Photo", 68, "photo.jpg","photo.jpg")
+      artPieces.push(art4);
+      var art5 = new ArtPiece("Storm", 499, "storm.png","storm.png")
+      artPieces.push(art5);
+
+      //alert(artPieces.length);
+
+      for (var i = 1; i <= 5; i++) {
+        document.getElementById("art"+i).src = artPieces[i-1].smallImage;
+      };
+    </script>
+
+    <!--enlarged image-->
+    <div id="largeImageSection">
+      <img src="" id="enlargedImage">
+      <div class="infoText">
+        <h1 id="name"></h1>
+        <h1 id="price"></h1>
+      </div>
+    </div>
+
+    <script type="text/javascript" language="javascript">
+
+    function hoverFadeIn(){
+      $(this).css("box-shadow", "3px 5px 5px #898c8a, -3px 5px 5px #898c8a");
+      $("#enlargedImage").attr("src", $(this).attr("src"));
+      $("#largeImageSection").fadeIn(400);
+    }
+    function hoverFadeOut(){
+      $(this).css("box-shadow", "none");
+      //$("#enlargedImage").css("display","none");
+      $("#largeImageSection").fadeOut(400);
+      $("#name").text("");$("#price").text("");
+    }
+
+      $("#art1").mouseenter(hoverFadeIn);
+      $("#art1").mouseleave(hoverFadeOut);
+      $("#art1").click(function(){
+        $("#name").text(art1.nameOfPiece);
+        $("#price").text("$" + art1.priceOfPiece);
+        setTimeout(function() {$("#name").text("");$("#price").text("");}, 5000);
+      });
+
+      $("#art2").mouseenter(hoverFadeIn);
+      $("#art2").mouseleave(hoverFadeOut);
+      $("#art2").click(function(){
+        $("#name").text(art2.nameOfPiece);
+        $("#price").text("$" + art2.priceOfPiece);
+        setTimeout(function() {$("#name").text("");$("#price").text("");}, 5000);
+      });
+
+      $("#art3").mouseenter(hoverFadeIn);
+      $("#art3").mouseleave(hoverFadeOut);
+      $("#art3").click(function(){
+        $("#name").text(art3.nameOfPiece);
+        $("#price").text("$" + art3.priceOfPiece);
+        setTimeout(function() {$("#name").text("");$("#price").text("");}, 5000);
+      });
+
+      $("#art4").mouseenter(hoverFadeIn);
+      $("#art4").mouseleave(hoverFadeOut);
+      $("#art4").click(function(){
+        $("#name").text(art4.nameOfPiece);
+        $("#price").text("$" + art4.priceOfPiece);
+        setTimeout(function() {$("#name").text("");$("#price").text("");}, 5000);
+      });
+
+      $("#art5").mouseenter(hoverFadeIn);
+      $("#art5").mouseleave(hoverFadeOut);
+      $("#art5").click(function(){
+        $("#name").text(art5.nameOfPiece);
+        $("#price").text("$" + art5.priceOfPiece);
+        setTimeout(function() {$("#name").text("");$("#price").text("");}, 5000);
+      });
+    </script>
+
+
+
+
+  </body>
+</html>
